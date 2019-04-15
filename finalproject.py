@@ -10,8 +10,8 @@ while slidenum<numslides:
     notes_slide=current_slide.notes_slide
     #notes_slide=slide.notes_slide : acceses nots slide
     text_frame=notes_slide.notes_text_frame
-    print('Current Slide'+str(slidenum+1))
-    newtext=raw_input("Enter text for slide here")
+    print('Current Slide '+str(slidenum+1))
+    newtext=raw_input("Enter text for slide here ")
     text_frame.text=text_frame.text+newtext
     slidenum=slidenum+1
 
