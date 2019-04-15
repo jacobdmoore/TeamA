@@ -1,5 +1,5 @@
 from pptx import Presentation
-prsname=raw_input("Enter Prestation name to modify: ")
+prsname=input("Enter Prestation name to modify: ")
 prs=Presentation(prsname)
 numslides=len(prs.slides) # produces number of slides in deck
 slidenum=0
@@ -11,7 +11,7 @@ while slidenum<numslides:
     #notes_slide=slide.notes_slide : acceses nots slide
     text_frame=notes_slide.notes_text_frame
     print('Current Slide '+str(slidenum+1))
-    newtext=raw_input("Enter text for slide here ")
+    newtext=input("Enter text for slide here ")
     text_frame.text=text_frame.text+newtext
     slidenum=slidenum+1
 
