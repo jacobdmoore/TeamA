@@ -1,5 +1,6 @@
 # Code happily adapted from StackOverflow with additional features.
 # https://stackoverflow.com/questions/45973453/using-mouse-and-keyboard-listeners-together-in-python
+# Written by Jacob Moore, (c) 2019
 
 from pynput.keyboard import Listener as KeyboardListener
 from pynput.mouse    import Listener as MouseListener
@@ -34,25 +35,25 @@ def on_press(key):
     # The cases are pretty self-explanatory. Shift and F5 are tracked as the 
     # ways the slideshow is restarted after it is exited with Esc.
     if str(key) in next_keys:
-        print('NEXT with',key,'at',timestamp)
-        with open('slidetracker.txt', 'a') as file:
-            file.write('\nNEXT with' + str(key) + 'at' + str(timestamp))
+        print('NEXT with',key,'at ',timestamp)
+        with open('action_key_tracker.txt', 'a') as file:
+            file.write('\nNEXT with' + str(key) + 'at ' + str(timestamp))
     elif str(key) in prev_keys:
-        print('PREVIOUS with',key,'at',timestamp)
-        with open('slidetracker.txt', 'a') as file:
-            file.write('\nPREVIOUS with' + str(key) + 'at' + str(timestamp))
+        print('PREVIOUS with',key,'at ',timestamp)
+        with open('action_key_tracker.txt', 'a') as file:
+            file.write('\nPREVIOUS with' + str(key) + 'at ' + str(timestamp))
     elif str(key) == 'Key.esc':
-        print('EXIT with Esc at',timestamp)
-        with open('slidetracker.txt', 'a') as file:
-            file.write('\nEXIT with Esc at' + str(timestamp))
+        print('EXIT with Esc at ',timestamp)
+        with open('action_key_tracker.txt', 'a') as file:
+            file.write('\nEXIT with Esc at ' + str(timestamp))
     elif str(key) in ['Key.shift_r','Key.shift']:
-        print('SHIFT KEY at',timestamp)
-        with open('slidetracker.txt', 'a') as file:
-            file.write('\nSHIFT with' + str(key) + 'at' + str(timestamp))
+        print('SHIFT KEY at ',timestamp)
+        with open('action_key_tracker.txt', 'a') as file:
+            file.write('\nSHIFT with' + str(key) + 'at ' + str(timestamp))
     elif str(key) == 'Key.f5':
-        print('ENTER with F5 at',timestamp)
-        with open('slidetracker.txt', 'a') as file:
-            file.write('\nENTER with F5 at' + str(timestamp))
+        print('ENTER with F5 at ',timestamp)
+        with open('action_key_tracker.txt', 'a') as file:
+            file.write('\nENTER with F5 at ' + str(timestamp))
 
 def on_move(x, y):
     global start_time
@@ -68,9 +69,9 @@ def on_click(x, y, button, pressed):
     
     # Only the left mouse click advances slides.
     if str(button) == 'Button.left':
-        print('NEXT with left click at',timestamp)
-        with open('slidetracker.txt', 'a') as file:
-            file.write('\nNEXT with left click at' + str(timestamp))
+        print('NEXT with left click at ',timestamp)
+        with open('action_key_tracker.txt', 'a') as file:
+            file.write('\nNEXT with left click at ' + str(timestamp))
 
 def on_scroll(x, y, dx, dy):
     global start_time
@@ -81,13 +82,13 @@ def on_scroll(x, y, dx, dy):
     # -1 is equivalent to a downscroll with the mouse.
     # 1 is an upscroll.
     if dy == -1:
-        print('NEXT with down scroll at',timestamp)
-        with open('slidetracker.txt', 'a') as file:
-            file.write('\nNEXT with down scroll at' + str(timestamp))
+        print('NEXT with down scroll at ',timestamp)
+        with open('action_key_tracker.txt', 'a') as file:
+            file.write('\nNEXT with down scroll at ' + str(timestamp))
     elif dy == 1:
         print('NEXT with up scroll',timestamp)
-        with open('slidetracker.txt', 'a') as file:
-            file.write('\nPREVIOUS with up scroll at' + str(timestamp))
+        with open('action_key_tracker.txt', 'a') as file:
+            file.write('\nPREVIOUS with up scroll at ' + str(timestamp))
 
 # Listen to both mouse (click and scroll) and keyboard actions.
 with MouseListener(on_click=on_click, on_scroll=on_scroll) as listener:
