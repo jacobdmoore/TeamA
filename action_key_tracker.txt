@@ -1,0 +1,19 @@
+2019-04-29 13:48:21.667721: Tracking started using desktop application
+NEXT with Key.right at 1.3174011707305908
+NEXT with Key.right at 1.6900742053985596
+NEXT with Key.right at 2.0526177883148193
+NEXT with Key.right at 2.4356062412261963
+ENTER with F5 at 3.341942310333252
+NEXT with Key.right at 3.819969892501831
+NEXT with Key.right at 4.025856971740723
+NEXT with Key.right at 4.226665019989014
+NEXT with Key.right at 4.424665212631226
+NEXT with Key.right at 4.626432180404663
+EXIT with Esc at 4.908818006515503
+SHIFT with Key.shift_r at 5.822954893112183
+ENTER with F5 at 6.0760252475738525
+NEXT with Key.right at 6.49726128578186
+NEXT with Key.right at 6.680147171020508
+NEXT with Key.right at 6.863583326339722
+NEXT with Key.right at 7.059567213058472
+CTRL with Key.ctrl at 7.4118571281433105
