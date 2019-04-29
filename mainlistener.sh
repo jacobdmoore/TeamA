@@ -11,12 +11,13 @@ case "$response" in
         ;;
 esac
 
-# Allows two pythons scripts to run simultaneously.
+# Allows two pythons scripts to run simultaneously (both in background).
+# Allows passing of KeyboardInterrupt to Python from shell.
 # First program records audio, second one records keystrokes and outputs as action_key_tracker.txt.
 trap "exit" INT TERM ERR
 trap "kill 0" EXIT
 
-python recordUI.py &
+python recordlecture.py &
 python keylistener.py "$google_slides" &
 echo 'Now recording! To cease recording, press CTRL + C.' &
 
