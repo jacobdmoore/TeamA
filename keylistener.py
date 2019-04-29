@@ -11,12 +11,20 @@ import time
 import sys
 import signal
 
+# Function that happens when KeyboardInterrupt occurs.
+def quit_gracefully(*args):
+    print('\n\nCeasing keyboard/mouse listening.')
+    exit(0);
+
+# This allows CTRL + C to be communicated to Python through the shell.
+signal.signal(signal.SIGINT, quit_gracefully)
+
+# Default is not Google.
 google = 0
 # Get input from shell script.
 google = sys.argv[1]
 
-print('IWH')
-    
+# Future improvements:  
 # MAKE CTRL + F5 an option to go to current slide, CTRL + SHIFT + F5 goes to beginning
 # CTRL SHIFT LEFT/RIGHT to switch desktops
 # ALT TAB
@@ -28,7 +36,7 @@ logging.basicConfig(filename=("full_keylog.txt"), level=logging.DEBUG, format='%
 
 # Log slide tracking.
 with open('action_key_tracker.txt','w+') as file:
-    if google:
+    if google == 1:
         program = 'Google Slides'
     else:
         program = 'desktop application'
@@ -115,8 +123,10 @@ def on_scroll(x, y, dx, dy):
         with open('action_key_tracker.txt', 'a') as file:
             file.write('\nPREVIOUS with up scroll at ' + str(timestamp))
 
-
- # Listen to both mouse (click and scroll) and keyboard actions.
-with MouseListener(on_click=on_click, on_scroll=on_scroll) as listener:
-    with KeyboardListener(on_press=on_press) as listener:
-        listener.join()
+try:
+     # Listen to both mouse (click and scroll) and keyboard actions.
+    with MouseListener(on_click=on_click, on_scroll=on_scroll) as listener:
+        with KeyboardListener(on_press=on_press) as listener:
+            listener.join()
+except KeyboardInterrupt:
+    quit_gracefully()
