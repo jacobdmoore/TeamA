@@ -17,7 +17,7 @@ esac
 trap "exit" INT TERM ERR
 trap "kill 0" EXIT
 
-python recordlecture.py &
+python newrecordlecture.py &
 python keylistener.py "$google_slides" &
 echo 'Now recording! To cease recording, press CTRL + C.' &
 
