@@ -86,7 +86,7 @@ for index in reversed(indices_enter_0):
 
 for index, (action, time) in enumerate(zip(action_list,time_list)):
 
-    print(action,'at',time,'and presentation_mode=',presentation_mode)
+    #print(action,'at',time,'and presentation_mode=',presentation_mode)
 
     # Get rid of any actions that aren't timestamp-worthy.
     if action not in timestamp_actions:
