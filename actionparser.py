@@ -94,12 +94,16 @@ for index, (action, time) in enumerate(zip(action_list,time_list)):
         del time_list[index]
         continue
 
-    # End timestamps informed by next beginning.
-    if len(timestamp_start) > 1:
-        timestamp_end.append(timestamp_start[-1])
+#    # End timestamps informed by next beginning.
+#    if len(timestamp_start) > 1:
+#        print('appending',timestamp_start[-1])
+#        timestamp_end.append(timestamp_start[-1])
 
     # Since we've cleared out non-timestamp actions, we can append start times whenever we append slide.
     if presentation_mode == 1:
+        if len(timestamp_start) > 1:
+            timestamp_end.append(timestamp_start[-1])
+
         if action in next_actions:
             slide_number.append(str(int(slide_number[-1]) + 1))
             timestamp_start.append(time)
@@ -119,6 +123,12 @@ for index, (action, time) in enumerate(zip(action_list,time_list)):
             continue
 
     else:
+        if action not in ['ENTER-C','ENTER','ENTER-0']:
+            continue
+
+        if len(timestamp_start) > 1:
+            timestamp_end.append(timestamp_start[-1])
+            
         if action == 'ENTER-C':
             presentation_mode = 1
             slide_number.append(slide_number[-1].replace('*',''))
