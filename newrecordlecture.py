@@ -112,7 +112,7 @@ signal.signal(signal.SIGINT, quit_gracefully)
 
 rec = Recorder(channels=2)
 try:
-    with rec.open('nonblocking.wav','wb') as recfile:
+    with rec.open(os.getcwd() + '/voiceFiles/lecture.wav','wb') as recfile:
         recfile.start_recording()
         time.sleep(5.0*1000000)
         recfile.stop_recording()
