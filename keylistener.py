@@ -36,7 +36,7 @@ logging.basicConfig(filename=("full_keylog.txt"), level=logging.DEBUG, format='%
 
 # Log slide tracking.
 with open('action_key_tracker.txt','w+') as file:
-    if google == 1:
+    if google:
         program = 'Google Slides'
     else:
         program = 'desktop application'
