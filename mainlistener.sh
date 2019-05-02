@@ -8,6 +8,7 @@ case "$response" in
         rm filenumber.txt
         rm full_keylog.txt
         rm timestamp_history.txt
+        rm *_notes.pptx
         mkdir -p ./slideVoice
         mkdir -p ./tempFiles
         mkdir -p ./textFiles
