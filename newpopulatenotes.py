@@ -19,23 +19,32 @@ if len(pptx_list) == 1:
 prs=Presentation(pptx_file)
 
 text_file_list = [f for f in listdir(os.getcwd() + '/textFiles/') if isfile(join(os.getcwd() + '/textFiles/', f))]
+slide_number_list = []
 
 for file in text_file_list:
-    with open(os.getcwd()+'/textFiles/'+file,'r') as c_file:
-        f = c_file.read()
 
     slide_number = file[5::]
     slide_number = slide_number[:-4]
+    slide_number_list.append(slide_number)
+
+slidefile = zip(slide_number_list,text_file_list)
+
+slide_number_list = [slide for slide,_ in sorted(slidefile)]
+
+for number in slide_number_list:
+
+    with open(os.getcwd()+'/textFiles/slide'+number+'.txt','r') as c_file:
+        f = c_file.read()
 
     presentation_mode = 1
 
     try:
-        slide_number = int(slide_number)
+        number = int(number)
     except:
-        slide_number = int(slide_number[:-1])
+        number = int(number[:-1])
         presentation_mode = 0
 
-    current_slide = prs.slides[int(slide_number)]
+    current_slide = prs.slides[int(number)]
     notes_slide = current_slide.notes_slide
      #notes_slide=slide.notes_slide : acceses nots slide
     text_frame = notes_slide.notes_text_frame
